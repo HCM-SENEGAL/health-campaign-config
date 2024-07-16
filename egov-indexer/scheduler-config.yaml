@@ -1,0 +1,24 @@
+scripts:
+  - name: script1.py
+    path: script1.py
+    frequency: '1'
+    env: {}
+  - name: script2.py
+    path: script2.py
+    env: {}
+    frequency: '2'
+  - name: population_coverage_heatmap.py
+    path: population_coverage_heatmap.py
+    requirementKey: populationCoverageHeatMap
+    frequency: '1'
+    env: {}
+  - name: delivered_coverage_heatmap.py
+    path: delivered_coverage_heatmap.py
+    requirementKey: deliveredCoverageHeatMap
+    frequency: '1'
+    env: {}
+  - name: product_coverage_heatmap.py
+    path: product_coverage_heatmap.py
+    requirementKey: productCoverageHeatMap
+    frequency: '1'
+    env: {}

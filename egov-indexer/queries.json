@@ -1,0 +1,294 @@
+{
+  "populationCoverageHeatMap": [
+    {
+    "destMapLayerIndex": "copy-nampula-districts",
+    "mapIndexIdVsBoundaryQuery": {
+      "size": 200,
+      "_source": ["Data.boundaryHierarchy.district"]
+    },
+    "targetsQuery": {
+      "size": 0,
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "Data.targetType.keyword": {
+                  "value": "INDIVIDUAL"
+                }
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "exists": {
+                "field": "Data.boundaryHierarchy.administrativeProvince"
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "DISTRICTS": {
+          "terms": {
+            "field": "Data.boundaryHierarchy.district.keyword",
+            "size": 100
+          },
+          "aggs": {
+            "TARGETS": {
+              "sum": {
+                "field": "Data.overallTarget"
+              }
+            }
+          }
+        }
+      }
+    },
+    "membersRegisteredQuery": {
+      "size": 0,
+      "query": {
+        "bool": {
+          "must": []
+        }
+      },
+      "aggs": {
+        "DISTRICTS": {
+          "terms": {
+            "field": "Data.boundaryHierarchy.district.keyword",
+            "size": 100
+          },
+          "aggs": {
+            "REGISTERED": {
+              "sum": {
+                "field": "Data.household.memberCount"
+              }
+            }
+          }
+        }
+      }
+    },
+    "boundaryBucketsPath": "DISTRICTS",
+    "targetsValuePath": "TARGETS",
+    "registeredPath": "REGISTERED"
+  }
+  ],
+  "householdCoverageHeatMap": [
+    {
+    "destMapLayerIndex": "copy-nampula-districts",
+    "mapIndexIdVsBoundaryQuery": {
+      "size": 200,
+      "_source": ["Data.boundaryHierarchy.district"]
+    },
+    "targetsQuery": {
+      "size": 0,
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "Data.targetType.keyword": {
+                  "value": "HOUSEHOLD"
+                }
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "exists": {
+                "field": "Data.boundaryHierarchy.administrativeProvince"
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "DISTRICTS": {
+          "terms": {
+            "field": "Data.boundaryHierarchy.district.keyword",
+            "size": 100
+          },
+          "aggs": {
+            "TARGETS": {
+              "sum": {
+                "field": "Data.overallTarget"
+              }
+            }
+          }
+        }
+      }
+    },
+    "householdsRegisteredQuery": {
+      "size": 0,
+      "query": {
+        "bool": {
+          "must": []
+        }
+      },
+      "aggs": {
+        "DISTRICTS": {
+          "terms": {
+            "field": "Data.boundaryHierarchy.district.keyword",
+            "size": 100
+          },
+          "aggs": {
+            "REGISTERED": {
+              "value_count": {
+                "field": "Data.household.id.keyword"
+              }
+            }
+          }
+        }
+      }
+    },
+    "boundaryBucketsPath": "DISTRICTS",
+    "targetsValuePath": "TARGETS",
+    "registeredPath": "REGISTERED"
+  }
+  ],
+  "deliveredCoverageHeatMap": [
+    {
+      "destMapLayerIndex": "copy-nampula-districts",
+      "mapIndexIdVsBoundaryQuery": {
+        "size": 200,
+        "_source": ["Data.boundaryHierarchy.district"]
+      },
+      "targetsQuery": {
+        "size": 0,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "Data.targetType.keyword": {
+                    "value": "INDIVIDUAL"
+                  }
+                }
+              }
+            ],
+            "must_not": [
+              {
+                "exists": {
+                  "field": "Data.boundaryHierarchy.administrativeProvince"
+                }
+              }
+            ]
+          }
+        },
+        "aggs": {
+          "DISTRICTS": {
+            "terms": {
+              "field": "Data.boundaryHierarchy.district.keyword",
+              "size": 100
+            },
+            "aggs": {
+              "TARGETS": {
+                "sum": {
+                  "field": "Data.overallTarget"
+                }
+              }
+            }
+          }
+        }
+      },
+      "deliveredQuery": {
+        "size": 0,
+        "query": {
+          "bool": {
+            "must": []
+          }
+        },
+        "aggs": {
+          "DISTRICTS": {
+            "terms": {
+              "field": "Data.boundaryHierarchy.district.keyword",
+              "size": 100
+            },
+            "aggs": {
+              "DELIVERED": {
+                "value_count": {
+                  "field": "Data.taskId.keyword"
+                }
+              }
+            }
+          }
+        }
+      },
+      "boundaryBucketsPath": "DISTRICTS",
+      "targetsValuePath": "TARGETS",
+      "deliveredPath": "DELIVERED"
+    }
+  ],
+  "productCoverageHeatMap": [
+    {
+    "destMapLayerIndex": "copy-nampula-districts",
+    "mapIndexIdVsBoundaryQuery": {
+      "size": 200,
+      "_source": ["Data.boundaryHierarchy.district"]
+    },
+    "targetsQuery": {
+      "size": 0,
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "Data.targetType.keyword": {
+                  "value": "PRODUCT"
+                }
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "exists": {
+                "field": "Data.boundaryHierarchy.administrativeProvince"
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "DISTRICTS": {
+          "terms": {
+            "field": "Data.boundaryHierarchy.district.keyword",
+            "size": 100
+          },
+          "aggs": {
+            "TARGETS": {
+              "sum": {
+                "field": "Data.overallTarget"
+              }
+            }
+          }
+        }
+      }
+    },
+    "productDeliveredQuery": {
+      "size": 0,
+      "query": {
+        "bool": {
+          "must": []
+        }
+      },
+      "aggs": {
+        "DISTRICTS": {
+          "terms": {
+            "field": "Data.boundaryHierarchy.district.keyword",
+            "size": 100
+          },
+          "aggs": {
+            "DELIVERED": {
+              "sum": {
+                "field": "Data.quantity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "boundaryBucketsPath": "DISTRICTS",
+    "targetsValuePath": "TARGETS",
+    "deliveredPath": "DELIVERED"
+  }
+  ]
+}
