@@ -49,3 +49,56 @@ ServiceMaps:
               - inJsonPath: $.additionalDetails
                 outJsonPath: $.Data.additionalDetails
           timeStampField: $.createdTime
+        - name: beneficiary-visited-index-v1
+          type: beneficiary
+          id: $.projectBeneficiaryClientReferenceId
+          isBulk: true
+          jsonPath: $
+          customJsonMapping:
+            indexMapping: { "Data": {"additionalDetails": {}} }
+            fieldMapping:
+              - inJsonPath: $.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.userName
+                outJsonPath: $.Data.userName
+              - inJsonPath: $.nameOfUser
+                outJsonPath: $.Data.nameOfUser
+              - inJsonPath: $.boundaryHierarchy
+                outJsonPath: $.Data.boundaryHierarchy
+              - inJsonPath: $.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.syncedTime
+                outJsonPath: $.Data.syncedTime
+              - inJsonPath: $.syncedTimeStamp
+                outJsonPath: $.Data.syncedTimeStamp
+              - inJsonPath: $.@timestamp
+                outJsonPath: $.Data.@timestamp
+              - inJsonPath: $.taskDates
+                outJsonPath: $.Data.taskDates
+              - inJsonPath: $.syncedDate
+                outJsonPath: $.Data.syncedDate
+              - inJsonPath: $.additionalDetails.cycleIndex
+                outJsonPath: $.Data.additionalDetails.cycleIndex
+              - inJsonPath: $.projectTypeId
+                outJsonPath: $.Data.projectTypeId
+              - inJsonPath: $.localityCode
+                outJsonPath: $.Data.localityCode
+              - inJsonPath: $.age
+                outJsonPath: $.Data.age
+              - inJsonPath: $.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.projectBeneficiaryClientReferenceId
+                outJsonPath: $.Data.projectBeneficiaryClientReferenceId
+              - inJsonPath: $.taskClientReferenceId
+                outJsonPath: $.Data.taskClientReferenceId
+              - inJsonPath: $.individualId
+                outJsonPath: $.Data.individualId
+              - inJsonPath: $.administrationStatus
+                outJsonPath: $.Data.administrationStatus
+              - inJsonPath: $.gender
+                outJsonPath: $.Data.gender
+              - inJsonPath: $.geoPoint
+                outJsonPath: $.Data.geoPoint
+              - inJsonPath: $.tag
+                outJsonPath: $.Data.tag
+          timeStampField: $.createdTime
