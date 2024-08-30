@@ -51,7 +51,7 @@ ServiceMaps:
           timeStampField: $.createdTime
         - name: beneficiary-visited-index-v1
           type: beneficiary
-          id: $.projectBeneficiaryClientReferenceId
+          id: $.projectBeneficiaryClientReferenceId,$.additionalDetails.cycleIndex
           isBulk: true
           jsonPath: $
           customJsonMapping:
